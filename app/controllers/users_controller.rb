@@ -13,14 +13,14 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:username])
     #if user exists and pasword matches
     if @user && @user.authenticate(params[:password])
-      flash[:message] = ""
+      # flash[:message] = ""
       session[:id] = @user.id
       redirect to "/home"
     elsif @user && !@user.authenticate(params[:password])
-      flash[:message] = "Invalid password."
+      flash.next[:message] = "Invalid password."
       redirect to '/login'
     else
-      flash[:message] = "No such user was found. Please try again."
+      flash.next[:message] = "No such user was found. Please try again."
       redirect to '/login'
     end
   end
@@ -38,10 +38,10 @@ end
 post '/signup' do
   if User.find_by(username: params[:username])
     flash.next[:message] = "That username is taken. Please try again."
-    
+
     redirect to '/signup'
   elsif User.find_by(email: params[:email])
-    flash[:message] = "That email is registered to another user. Please log in or try again."
+    flash.next[:message] = "That email is registered to another user. Please log in or try again."
     redirect to '/signup'
   else
     @user = User.new(username: params[:username], email: params[:email], password: params[:password])
@@ -49,7 +49,7 @@ post '/signup' do
         session[:id] = @user.id
         redirect to "/home"
       else
-        flash[:message] = "Password must be 6+ characters in length, and email must be in standard format."
+        flash.next[:message] = "Password must be 6+ characters in length, and email must be in standard format."
         redirect to '/signup'
       end
   end

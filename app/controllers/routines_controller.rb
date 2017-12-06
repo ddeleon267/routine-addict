@@ -47,7 +47,7 @@ class RoutinesController < ApplicationController
 
   ############ UPDATE ###########
   get '/routines/:id/edit' do
-  
+
     if logged_in?
       @routine = Routine.find(params[:id])
       erb :'/routines/edit'
