@@ -20,5 +20,4 @@ ActiveRecord::Base.establish_connection(
 # ActiveRecord::Base.connection.execute('DELETE FROM routine_products;')
 # ActiveRecord::Base.connection.execute('DELETE FROM sqlite_sequence WHERE NAME="routine_products";')
 
-require 'rack-flash'
 require_all 'app'
