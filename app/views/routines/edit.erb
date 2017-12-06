@@ -10,13 +10,8 @@
   <label for="products">Products</label><br></br>
 
 
-  <% binding.pry %>
-  <% @routine.routine_products.each do |product| %>
-    <li><%= Product.find(product.product_id).name%> |
-    <%= Product.find(product.product_id).category%> |
-    <%= Product.find(product.product_id).ingredients%> |
-    <%= Product.find(product.product_id).notes%></li>
-  <%end%>
+
+
 
   <br></br>
     <p>Add/Remove Products</p>
