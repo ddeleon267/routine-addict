@@ -54,7 +54,6 @@ class ProductsController < ApplicationController
 
 
 #### I don't necessarily want the user to have this functionality but it's helpful for me to have around for now.
-
 ########### UPDATE ###########
 
   get '/products/:id/edit' do
@@ -80,6 +79,8 @@ class ProductsController < ApplicationController
       else
         redirect to "/products/#{@product.id}/edit"
       end
+    else
+      redirect to '/login'
     end
   end
 

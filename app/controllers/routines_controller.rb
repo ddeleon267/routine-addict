@@ -10,14 +10,10 @@ class RoutinesController < ApplicationController
   end
 
   post '/routines' do
-
-    if !params[:routine][:name].empty? && !params[:routine][:description].empty?
-      # binding.pry
+    if logged_in? && !params[:routine][:name].empty? && !params[:routine][:description].empty?
       @routine = Routine.new(params[:routine])
-
       @routine.user_id = session[:id]
       @routine.save
-
       erb :'routines/show'
     else
       redirect '/routines/new'
@@ -26,9 +22,7 @@ class RoutinesController < ApplicationController
 
   ############ READ ###########
   get '/routines' do
-  ###this is going to need to be modified
     if logged_in?
-
       @routines = current_user.routines.all
       erb :'/routines/index'
     else
@@ -57,37 +51,36 @@ class RoutinesController < ApplicationController
   end
 
   patch '/routines/:id' do
-	  @routine = Routine.find(params[:id])
+    @routine = Routine.find(params[:id])
 
-    last_name = @routine.name
-    # last_products = @routine.products
-    last_description = @routine.description
+    if current_user.id == @routine.user_id
+      last_name = @routine.name
+      # last_products = @routine.products  ##this will break and make it angry
+      last_description = @routine.description
+	    @routine.update(name: params[:routine][:name])
+      @routine.products.clear
 
-      if current_user.id == @routine.user_id
-	      @routine.update(name: params[:routine][:name])
-        @routine.products.clear
-
-        params[:routine][:product_ids].map do |product|
-          i = product.to_i
-          @routine.products << Product.find(i)
-        end
-
-        # @routine.routine_products.build(product_id: i)
-        # @routine.update(products: params[:routine][:products])
-        @routine.update(description: params[:routine][:description])
-
-        @routine.update(name: last_name) if params[:routine][:name].empty?
-        # @routine.update(products: last_products) if params[:routine][:products].empty?
-        @routine.update(description: last_description) if params[:routine][:description].empty?
-
-        if @routine.save
-          redirect to "/routines/#{@routine.id}"
-        else
-          redirect to "/routines/#{@routine.id}/edit"
-        end
-      else
-        redirect to "/routines"
+      params[:routine][:product_ids].map do |product|
+        i = product.to_i
+        @routine.products << Product.find(i)
       end
+
+      #what I had before
+      # @routine.routine_products.build(product_id: i)
+      # @routine.update(products: params[:routine][:products])
+      @routine.update(description: params[:routine][:description])
+      @routine.update(name: last_name) if params[:routine][:name].empty?
+      # @routine.update(products: last_products) if params[:routine][:products].empty?
+      @routine.update(description: last_description) if params[:routine][:description].empty?
+
+      if @routine.save
+        redirect to "/routines/#{@routine.id}"
+      else
+        redirect to "/routines/#{@routine.id}/edit"
+      end
+    else
+      redirect to "/routines"
+    end
 	end
 
   ############ DELETE #############
@@ -96,8 +89,8 @@ class RoutinesController < ApplicationController
     @routine = Routine.find(params[:id])
     if logged_in? && @routine.user == current_user
       @routine.delete
-      # flash[:message] = "This routine has been deleted"
-      redirect to '/home'
+      flash.next[:message] = "Routine successfully deleted deleted"
+      redirect to '/routines'
     else
       redirect to '/login'
     end
