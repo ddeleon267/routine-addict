@@ -94,6 +94,5 @@ class RoutinesController < ApplicationController
     else
       redirect to '/login'
     end
-
   end
 end

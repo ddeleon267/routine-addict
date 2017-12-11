@@ -55,7 +55,6 @@ class ProductsController < ApplicationController
 
 #### I don't necessarily want the user to have this functionality but it's helpful for me to have around for now.
 ########### UPDATE ###########
-
   get '/products/:id/edit' do
     if logged_in?
       @product = Product.find(params[:id])
@@ -85,6 +84,7 @@ class ProductsController < ApplicationController
   end
 
   ############ DELETE #############
+  ## I don't think I want the user to have this functionality
 
   # delete '/products/:id/delete' do
   #   @product = Product.find(params[:id])
