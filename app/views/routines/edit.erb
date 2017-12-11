@@ -7,6 +7,7 @@
   <label for="name">Routine Name (e.g. "Winter Morning," "Fall Evening")</label><br></br>
   <input type="text" name="routine[name]" value="<%= @routine.name %>"><br></br>
 
+<% # just sectioning this off for 1-on-1%>
   <label for="products">Products</label><br></br>
 
   <br></br>
@@ -15,6 +16,8 @@
     <%Product.all[0,10].each do |product|%>
       <input type="checkbox" name="routine[product_ids][]" value="<%=product.id%>"<%='checked' if @routine.products.include?(product)%>><%=product.name%><br></input>
     <%end%><br>
+
+<% ############################################%>
 
   <label for="description">Description</label>
   <input type="text" name="routine[description]" value="<%= @routine.description %>">
