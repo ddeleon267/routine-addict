@@ -13,8 +13,8 @@ class ProductsController < ApplicationController
     if logged_in? && !params[:product][:name].empty?
 
       if Product.find_by(name: params[:product][:name])
+        flash.next[:message] = "This product already exists."
         redirect to '/products/new'
-        #flash message -- this product exitss
       else
         @product = Product.create(
           name: params[:product][:name],
@@ -26,7 +26,7 @@ class ProductsController < ApplicationController
       end
 
     elsif params[:product][:name].empty?
-      #flash message
+      flash.next[:message] = "You may not leave the name field blank."
       redirect '/products/new'
     else
       redirect '/login'
@@ -67,18 +67,19 @@ class ProductsController < ApplicationController
   end
 
   patch '/products/:id' do
+    if logged_in?
+      @product = Product.find(params[:id])
 
-    @product = Product.find(params[:id])
-
-    if !params[:product][:name].empty?
-      @product.name = params[:product][:name]
-      @product.category = params[:product][:category]
-      @product.ingredients = params[:product][:ingredients]
-      @product.notes = params[:product][:notes]
-      @product.save
-      redirect to "/products/#{@product.id}"
-    else
-      redirect to "/products/#{@product.id}/edit"
+      if !params[:product][:name].empty?
+        @product.name = params[:product][:name]
+        @product.category = params[:product][:category]
+        @product.ingredients = params[:product][:ingredients]
+        @product.notes = params[:product][:notes]
+        @product.save
+        redirect to "/products/#{@product.id}"
+      else
+        redirect to "/products/#{@product.id}/edit"
+      end
     end
   end
 
