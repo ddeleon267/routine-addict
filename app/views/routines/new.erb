@@ -9,7 +9,7 @@
 
   <label for="products">Products</label><br></br>
 
-    <%Product.all[0,10].each do |product|%>
+    <%Product.last(10).each do |product|%>
       <input type="checkbox" name="routine[product_ids][]" value="<%=product.id%>"><%=product.name%><br></input>
     <%end%><br>
 
