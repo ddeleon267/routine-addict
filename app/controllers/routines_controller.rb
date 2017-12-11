@@ -89,7 +89,7 @@ class RoutinesController < ApplicationController
     @routine = Routine.find(params[:id])
     if logged_in? && @routine.user == current_user
       @routine.delete
-      flash.next[:message] = "Routine successfully deleted deleted"
+      flash.next[:message] = "Routine successfully deleted."
       redirect to '/routines'
     else
       redirect to '/login'

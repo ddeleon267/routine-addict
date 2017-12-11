@@ -1,3 +1,8 @@
+<% if flash[:message] %>
+<p><%= flash[:message] %></p>
+<% end %>
+
+
 <h1>My Routines</h1>
 
 <% if !@routines.empty? %>
