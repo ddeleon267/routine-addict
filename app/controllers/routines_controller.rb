@@ -57,18 +57,12 @@ class RoutinesController < ApplicationController
       last_name = @routine.name
       # last_products = @routine.products  ##this will break and make it angry
       last_description = @routine.description
+
 	    @routine.update(name: params[:routine][:name])
       @routine.products.clear
-      binding.pry
-      params[:routine][:product_ids].map do |product|
-        i = product.to_i
-        @routine.products << Product.find(i)
-      end
-
-      #what I had before
-      # @routine.routine_products.build(product_id: i)
-      # @routine.update(products: params[:routine][:products])
+      @routine.product_ids = params[:routine][:product_ids]
       @routine.update(description: params[:routine][:description])
+
       @routine.update(name: last_name) if params[:routine][:name].empty?
       # @routine.update(products: last_products) if params[:routine][:products].empty?
       @routine.update(description: last_description) if params[:routine][:description].empty?
