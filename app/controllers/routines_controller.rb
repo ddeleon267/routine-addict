@@ -59,7 +59,7 @@ class RoutinesController < ApplicationController
       last_description = @routine.description
 	    @routine.update(name: params[:routine][:name])
       @routine.products.clear
-
+      binding.pry
       params[:routine][:product_ids].map do |product|
         i = product.to_i
         @routine.products << Product.find(i)
