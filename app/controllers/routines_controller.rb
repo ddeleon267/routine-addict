@@ -59,7 +59,7 @@ class RoutinesController < ApplicationController
       last_description = @routine.description
 
 	    @routine.update(name: params[:routine][:name])
-      @routine.products.clear
+      @routine.product_ids.clear
       @routine.product_ids = params[:routine][:product_ids]
       @routine.update(description: params[:routine][:description])
 
