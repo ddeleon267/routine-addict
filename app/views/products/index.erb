@@ -1,7 +1,4 @@
-<!-- This page currently displays all products.
-  Is this what I want? or do I just want a user to be be able to see all the
-products he or she uses?
--->
+<h2> Products Added by the Community </h2>
 
 <%@products.each do |product| %>
   <li><a href="/products/<%=product.id%>"><%=product.name%></a></li>

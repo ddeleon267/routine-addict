@@ -52,8 +52,6 @@ class ProductsController < ApplicationController
     end
   end
 
-
-#### I don't necessarily want the user to have this functionality but it's helpful for me to have around for now.
 ########### UPDATE ###########
   get '/products/:id/edit' do
     if logged_in?
@@ -95,7 +93,5 @@ class ProductsController < ApplicationController
   #   else
   #     redirect to '/login'
   #   end
-  #
   # end
-
 end
