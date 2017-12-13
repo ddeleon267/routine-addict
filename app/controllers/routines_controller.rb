@@ -55,17 +55,13 @@ class RoutinesController < ApplicationController
 
     if current_user.id == @routine.user_id
       last_name = @routine.name
-      # last_products = @routine.products  ##this will break and make it angry
-      last_description = @routine.description
+      params[:routine][:name].empty? ? @routine.update(name: last_name) : @routine.update(name: params[:routine][:name])
 
-	    @routine.update(name: params[:routine][:name])
+      last_description = @routine.description
+      params[:routine][:description].empty? ? @routine.update(description: last_description) : @routine.update(description: params[:routine][:description])
+
       @routine.product_ids.clear
       @routine.product_ids = params[:routine][:product_ids]
-      @routine.update(description: params[:routine][:description])
-
-      @routine.update(name: last_name) if params[:routine][:name].empty?
-      # @routine.update(products: last_products) if params[:routine][:products].empty?
-      @routine.update(description: last_description) if params[:routine][:description].empty?
 
       if @routine.save
         redirect to "/routines/#{@routine.id}"

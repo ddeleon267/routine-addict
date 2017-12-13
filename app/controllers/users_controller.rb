@@ -13,7 +13,6 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:username])
     #if user exists and pasword matches
     if @user && @user.authenticate(params[:password])
-      # flash[:message] = ""
       session[:id] = @user.id
       redirect to "/home"
     elsif @user && !@user.authenticate(params[:password])
@@ -38,7 +37,6 @@ end
 post '/signup' do
   if User.find_by(username: params[:username])
     flash.next[:message] = "That username is taken. Please try again."
-
     redirect to '/signup'
   elsif User.find_by(email: params[:email])
     flash.next[:message] = "That email is registered to another user. Please log in or try again."
@@ -63,7 +61,6 @@ end
       @routines = Routine.all
       @products = Product.all
       @users = User.all
-
       erb :'/users/home'
     else
       redirect to '/login'
@@ -71,7 +68,6 @@ end
   end
 
   get '/users/:slug' do
-    #user show page ---> for other users and owner to see ---> kind of like FB timeline
     if logged_in?
       @user = User.find_by_slug(params[:slug])
       @user_routines = @user.routines
@@ -84,8 +80,6 @@ end
 ############ LOGOUT ############
 
   get '/logout' do
-    #if logged in, clear session, redirect to login
-    #otherwise, redirect to main index page. could change these redirects as well
     session.clear
     redirect to '/'
   end
