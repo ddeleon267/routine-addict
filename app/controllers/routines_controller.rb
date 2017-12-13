@@ -70,6 +70,7 @@ class RoutinesController < ApplicationController
       if @routine.save
         redirect to "/routines/#{@routine.id}"
       else
+        flash.next[:message] = "Something went wrong. Make sure no fields are left blank, and at least one product is chosen."
         redirect to "/routines/#{@routine.id}/edit"
       end
     else
