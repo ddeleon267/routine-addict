@@ -7,7 +7,7 @@
     <%@routines.reverse.take(5).each do |routine|%>
       <ul><a href="/routines/<%=routine.id%>"><%=routine.name%></a>
         <!--would be nice to say 'you' for routines created by current user -->
-        <li>Added by <%=routine.user.username%></li>
+        <li>Added by <a href="/users/<%=routine.user.slug%>"><%=routine.user.username%></a></li>
         <li><%=routine.description%></li>
       </ul>
     <%end%>
