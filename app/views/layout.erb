@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <div class="wrapper">
+    <div class="wrapper container-fluid">
       <div class="nav">
         <% if logged_in? %>
           <a href="/home">Home</a>
@@ -20,8 +20,10 @@
           <a href="/logout" onclick="return confirm('Are you sure you want to log out?');">Log Out</a>
         <% end %>
       </div>
-
       <%= yield %>
+      <footer class="branding">
+        <small>&copy; 2017 <strong>Routine Addict</strong></small>
+      </footer>
     </div>
   <!-- jQuery via Google + local fallback, sew h5bp.com -->
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
