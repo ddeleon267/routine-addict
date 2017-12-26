@@ -2,7 +2,6 @@
 <h2>added by <%= current_user.username %> </h2> <!--would like this to be 'you' if current user -->
 
 <% if current_user.id == @routine.user_id %>
-  <% #can I do a button here as well??? %>
   <a href= "/routines/<%=@routine.id %>/edit"> Edit This Routine </a>
   <form method="POST" action="/routines/<%=@routine.id%>/delete">
     <input id="hidden" type="hidden" name="_method" value="delete">
@@ -18,8 +17,3 @@
 
 <h3>Description: </h3>
 <p><%=@routine.description%></p>
-
-
-<!--probably doing to want to modify table for routines at some point; will probably be better
-to have a brief description plus a longer recipe-style description. more convenent to use the former
-for a brief summary / subtitle for other users to see, then display longer description on a routine's show page -->
