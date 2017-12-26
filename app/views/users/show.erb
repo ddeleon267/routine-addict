@@ -1,19 +1,14 @@
-<div class="user_info">
-  <h1><%=@user.username %></h1>
-</div>
+<h1><%=@user.username %></h1>
+<h3> <%= @user.username %>'s routines </h3>
 
-<div>
-  <h3> <%= @user.username %>'s routines </h3>
-
-  <% if @user_routines.empty? %>
-    <p> <%= @user.username %> has not added any routines yet!<p>
-  <%else%>
-    <%@user_routines.reverse.each do |routine|%>
-      <ul><a href='/routines/<%=routine.id%>'><%=routine.name%></a>
-          <%routine.products.each do |product|%>
-            <li><%=product.name%></li>
-          <%end%>
-      </ul>
-    <%end%>
+<% if @user_routines.empty? %>
+  <p> <%= @user.username %> has not added any routines yet!<p>
+<%else%>
+  <%@user_routines.reverse.each do |routine|%>
+    <ul><a href='/routines/<%=routine.id%>'><%=routine.name%></a>
+        <%routine.products.each do |product|%>
+          <li><%=product.name%></li>
+        <%end%>
+    </ul>
   <%end%>
-</div>
+<%end%>
