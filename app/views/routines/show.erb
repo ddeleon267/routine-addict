@@ -1,5 +1,7 @@
 <h1>Routine: <%=@routine.name%></h1>
-<h2>added by <%= current_user.username %> </h2> <!--would like this to be 'you' if current user -->
+
+<% user = (current_user.id == @routine.user_id) ? "you" : @routine.user.username %>
+<h2>added by <%= user %> </h2>
 
 <% if current_user.id == @routine.user_id %>
   <a href= "/routines/<%=@routine.id %>/edit"> Edit This Routine </a>
