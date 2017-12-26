@@ -1,13 +1,11 @@
 require './config/environment'
-require 'sinatra' ##do I need this??
+require 'sinatra'
 require 'sinatra/flash'
 
 class ApplicationController < Sinatra::Base
 
   configure do
-    #set :public_folder, 'public'
-    #set :views, 'app/views'
-    register Sinatra::ActiveRecordExtension ## do i need this?
+    register Sinatra::ActiveRecordExtension
     set :views, Proc.new { File.join(root, "../views/") }
     enable :sessions
     set :session_secret, "password_security"
@@ -16,7 +14,6 @@ class ApplicationController < Sinatra::Base
 
   get '/' do
     if logged_in?
-      @user =
       redirect to "/home"
     else
       erb :index

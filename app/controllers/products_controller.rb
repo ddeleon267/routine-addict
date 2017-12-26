@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
     if logged_in? && !params[:product][:name].empty?
 
       if Product.find_by(name: params[:product][:name])
-        flash.next[:message] = "This product already exists."
+        flash.next[:message] = "This product already exists. Please add a new product or choose from the products below."
         redirect to '/products/new'
       else
         @product = Product.create(
@@ -82,7 +82,7 @@ class ProductsController < ApplicationController
   end
 
   ############ DELETE #############
-  ## I don't think I want the user to have this functionality
+  ## I don't want the user to have this functionality
 
   # delete '/products/:id/delete' do
   #   @product = Product.find(params[:id])
