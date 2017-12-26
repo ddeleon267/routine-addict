@@ -2,11 +2,21 @@
   <p><%= flash[:message] %></p>
 <% end %>
 
-<form method="POST" action="/products">
-    Product Name: <input type="text" name="product[name]"></input>
-    Category: <input type="text" name="product[category]"></input>
-    Ingredients: <input type="text-area" name="product[ingredients]"></input>
-    Notes: <input type="text" name="product[notes]"></input>
+<h1>Add A New Product!</h1>
 
-    <input type="submit" name="Submit Product" value="Submit Product"></input>
+<form method="post" action="/products">
+
+  <label for="name">Product Name</label><br></br>
+  <input type="text" name="product[name]"></input><br></br>
+
+  <label for="category">Product Category (Cleanser, Moisturizer, etc.)</label><br></br>
+  <input type="text" name="product[category]"></input><br></br>
+
+  <label for="ingredients">Product Ingredients</label><br></br>
+  <input type="text-area" name="product[ingredients]"></input><br></br>
+
+  <label for="notes">Product Notes</label><br></br>
+  <input type="text" name="product[notes]"></input><br></br>
+
+  <input type="submit" name="Submit Product" value="Submit Product"></input>
 </form>
