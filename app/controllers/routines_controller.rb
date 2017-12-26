@@ -16,6 +16,7 @@ class RoutinesController < ApplicationController
       @routine.save
       erb :'routines/show'
     else
+      flash.next[:message] = "Something went wrong. Make sure no fields are left blank, and at least one product is chosen."
       redirect '/routines/new'
     end
   end
