@@ -11,7 +11,6 @@ class UsersController < ApplicationController
 
   post '/login' do
     @user = User.find_by(username: params[:username])
-    #if user exists and pasword matches
     if @user && @user.authenticate(params[:password])
       session[:id] = @user.id
       redirect to "/home"
@@ -43,13 +42,13 @@ post '/signup' do
     redirect to '/signup'
   else
     @user = User.new(username: params[:username], email: params[:email], password: params[:password])
-      if @user.save
-        session[:id] = @user.id
-        redirect to "/home"
-      else
-        flash.next[:message] = "Password must be 6+ characters in length, and email must be in standard format."
-        redirect to '/signup'
-      end
+    if @user.save
+      session[:id] = @user.id
+      redirect to "/home"
+    else
+      flash.next[:message] = "Password must be 6+ characters in length, and email must be in standard format."
+      redirect to '/signup'
+    end
   end
 end
 
