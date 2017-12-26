@@ -74,6 +74,7 @@ class ProductsController < ApplicationController
         @product.save
         redirect to "/products/#{@product.id}"
       else
+        flash.next[:message] = "You may not leave the name field blank."
         redirect to "/products/#{@product.id}/edit"
       end
     else

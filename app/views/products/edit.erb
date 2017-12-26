@@ -1,9 +1,10 @@
-
-
+<% if flash[:message] %>
+  <p><%= flash[:message] %></p>
+<% end %>
 
 <h1>Product Edit Form</h1>
 
-<form method="post" action="/products/<%=@product.id%>">
+<form method="patch" action="/products/<%=@product.id%>">
   <input id="hidden" type="hidden" name="_method" value="PATCH">
 
   <label for="name">Product Name</label><br></br>
@@ -17,5 +18,5 @@
   <label for="notes">Product Notes</label><br></br>
   <input type="text" name="product[notes]" value="<%= @product.notes %>"></input><br></br>
 
-    <input type="submit" name="Submit Product" value="Submit Product"></input>
+  <input type="submit" name="Submit Product" value="Submit Product"></input>
 </form>
