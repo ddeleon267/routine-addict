@@ -1,10 +1,21 @@
-<form method="POST" action="/products/<%=@product.id%>">
+
+
+
+<h1>Product Edit Form</h1>
+
+<form method="post" action="/products/<%=@product.id%>">
   <input id="hidden" type="hidden" name="_method" value="PATCH">
 
-    Product Name: <input type="text" name="product[name]" value="<%= @product.name %>"></input>
-    Category: <input type="text" name="product[category]" value="<%= @product.category %>"></input>
-    Ingredients: <input type="text-area" name="product[ingredients]" value="<%= @product.ingredients %>"></input>
-    Notes: <input type="text" name="product[notes]" value="<%= @product.notes %>"></input>
+  <label for="name">Product Name</label><br></br>
+  <input type="text" name="product[name]" value="<%= @product.name %>"></input><br></br>
+  <label for="category">Product Category (Cleanser, Moisturizer, etc.)</label><br></br>
+  <input type="text" name="product[category]" value="<%= @product.category %>"></input><br></br>
+
+  <label for="ingredients">Product Ingredients</label><br></br>
+  <input type="text-area" name="product[ingredients]" value="<%= @product.ingredients %>"></input><br></br>
+
+  <label for="notes">Product Notes</label><br></br>
+  <input type="text" name="product[notes]" value="<%= @product.notes %>"></input><br></br>
 
     <input type="submit" name="Submit Product" value="Submit Product"></input>
 </form>
