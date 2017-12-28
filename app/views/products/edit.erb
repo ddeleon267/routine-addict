@@ -4,7 +4,7 @@
 
 <h1>Product Edit Form</h1>
 
-<form method="patch" action="/products/<%=@product.id%>">
+<form method="post" action="/products/<%=@product.id%>">
   <input id="hidden" type="hidden" name="_method" value="PATCH">
 
   <label for="name">Product Name</label><br></br>
