@@ -7,7 +7,6 @@
       <% user = (current_user.id == routine.user_id) ? "you" : routine.user.username %>
       <ul><a href="/routines/<%=routine.id%>"><%=routine.name%></a>
         <li>Added by <a href="/users/<%=routine.user.slug%>"><%=user%></a></li>
-        <li><%=routine.description%></li>
       </ul>
     <%end%>
   <%end%>
