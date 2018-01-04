@@ -1,6 +1,5 @@
 class ProductsController < ApplicationController
 
-############ CREATE ###########
   get '/products/new' do
     if logged_in?
       erb :'products/new'
@@ -33,7 +32,6 @@ class ProductsController < ApplicationController
     end
   end
 
-############ READ ###########
   get '/products' do
     if logged_in?
       @products = Product.all
@@ -52,7 +50,6 @@ class ProductsController < ApplicationController
     end
   end
 
-########### UPDATE ###########
   get '/products/:id/edit' do
     if logged_in?
       @product = Product.find(params[:id])

@@ -1,6 +1,5 @@
 class RoutinesController < ApplicationController
 
-  ############ CREATE ###########
   get '/routines/new' do
     if logged_in?
       erb :'routines/new'
@@ -21,7 +20,6 @@ class RoutinesController < ApplicationController
     end
   end
 
-  ############ READ ###########
   get '/routines' do
     if logged_in?
       @routines = current_user.routines.all
@@ -40,7 +38,6 @@ class RoutinesController < ApplicationController
     end
   end
 
-  ############ UPDATE ###########
   get '/routines/:id/edit' do
     @routine = Routine.find(params[:id])
     if logged_in? && current_user.id == @routine.user_id
@@ -73,8 +70,6 @@ class RoutinesController < ApplicationController
       redirect to "/routines"
     end
 	end
-
-  ############ DELETE #############
 
   delete '/routines/:id/delete' do
     @routine = Routine.find(params[:id])
