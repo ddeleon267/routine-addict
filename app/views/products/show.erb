@@ -1,7 +1,9 @@
 <h2> <%= @product.name %> </h2>
-<li> Category: <%= @product.category %> </li>
-<li> Ingredients: <%= @product.ingredients %> </li>
-<li> Notes: <%= @product.notes %> </li>
+<li><strong>Category:</strong> <%= @product.category %> </li>
+<br>
+<li><strong>Ingredients:</strong> <%= @product.ingredients %> </li>
+<br>
+<li><strong>Notes:</strong> <%= @product.notes %> </li>
 
 <br><br>
 <a href= "/products/<%=@product.id %>/edit"> Edit This Product </a>
