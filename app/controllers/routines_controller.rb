@@ -22,7 +22,7 @@ class RoutinesController < ApplicationController
 
   get '/routines' do
     if logged_in?
-      @routines = current_user.routines.all
+      @routines = current_user.routines
       erb :'/routines/index'
     else
       redirect to '/login'
