@@ -1,6 +1,3 @@
-
-###maybe try this is it fixes it????
-# require_relative './config/environment'
 require File.expand_path("../config/environment", __FILE__)
 
 
