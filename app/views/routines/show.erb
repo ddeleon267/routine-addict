@@ -1,11 +1,11 @@
-<h1>Routine: <%=@routine.name%></h1>
+<h1>Routine: <%= @routine.name %></h1>
 
 <% user = (current_user.id == @routine.user_id) ? "you" : @routine.user.username %>
 <h2>added by <i><%= user %></i></h2>
 
 <% if current_user.id == @routine.user_id %>
-  <a href= "/routines/<%=@routine.id %>/edit"> Edit This Routine </a>
-  <form method="POST" action="/routines/<%=@routine.id%>/delete">
+  <a href= "/routines/<%= @routine.id %>/edit"> Edit This Routine </a>
+  <form method="POST" action="/routines/<%= @routine.id %>/delete">
     <input id="hidden" type="hidden" name="_method" value="delete">
     <input id="delete_button" onclick="return confirm('Are you sure you want to delete this routine?');" type="submit" name="Delete Routine" value="Delete Routine">
   </form>
@@ -13,9 +13,9 @@
 
 <h3>Products Used:</h3>
 
-<%@routine.products.each do |product| %>
-  <li><a href="/products/<%=product.id%>"><%=product.name%></a></li>
-<%end%>
+<% @routine.products.each do |product| %>
+  <li><a href="/products/<%= product.id %>"><%= product.name %></a></li>
+<% end %>
 
 <h3>Description: </h3>
-<p><%=@routine.description%></p>
+<p><%= @routine.description %></p>
