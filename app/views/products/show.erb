@@ -1,15 +1,18 @@
 <h2> <%= @product.name %> </h2>
+
 <li><strong>Category:</strong> <%= @product.category %> </li>
 <br>
+
 <li><strong>Ingredients:</strong> <%= @product.ingredients %> </li>
 <br>
+
 <li><strong>Notes:</strong> <%= @product.notes %> </li>
 
 <br><br>
-<a href= "/products/<%=@product.id %>/edit"> Edit This Product </a>
+<a href= "/products/<%= @product.id %>/edit"> Edit This Product </a>
 
 <!-- I don't want a user to have this functionality but it is nice to have around-->
 
-<!-- <form method="POST" action="/products/<%=@product.id%>/delete">
+<!-- <form method="POST" action="/products/<%= @product.id %>/delete">
       <input id="hidden" type="hidden" name="_method" value="delete">
       <input id="delete_button" type="submit" name="Delete Product" value="Delete Product"></input> -->

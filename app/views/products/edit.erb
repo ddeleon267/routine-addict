@@ -4,11 +4,12 @@
 
 <h1>Product Edit Form</h1>
 
-<form method="post" action="/products/<%=@product.id%>">
+<form method="post" action="/products/<%= @product.id %>">
   <input id="hidden" type="hidden" name="_method" value="PATCH">
 
   <label for="name">Product Name</label><br></br>
   <input type="text" name="product[name]" value="<%= @product.name %>"></input><br></br>
+
   <label for="category">Product Category (Cleanser, Moisturizer, etc.)</label><br></br>
   <input type="text" name="product[category]" value="<%= @product.category %>"></input><br></br>
 
