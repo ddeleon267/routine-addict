@@ -22,6 +22,10 @@
 
 <h2>Comments</h2>
 
+<% if flash[:message] %>
+  <p><%= flash[:message] %></p>
+<% end %>
+
 <form method="post" action="/comments">
   <input type="hidden" name="comment[routine_id]" value="<%= @routine.id %>">
   <label for="content">Leave a comment</label><br></br>

@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
 
   patch '/comments/:id' do
     @comment = Comment.find(params[:id])
-    if logged_in? && current_user.id == @comment.user_id
+    if logged_in? && current_user.id == @comment.user_id && !params[:comment][:content].empty?
       @comment.update(params[:comment])
       @comment.save
     else
