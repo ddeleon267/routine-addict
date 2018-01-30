@@ -20,19 +20,16 @@
 <h3>Description: </h3>
 <p><%= @routine.description %></p>
 
-<form method="post" action="/comments">
 
+<% #form for le comments %>
+<form method="post" action="/comments">
+  <input type="hidden" name="comment[routine_id]" value="<%= @routine.id %>">
   <label for="content">Leave a comment</label><br></br>
   <input type="text" name="comment[content]"><br></br>
-
   <input type="submit" id="submit" value="Submit">
 </form>
 
-
-
-
-<!-- Comments:
-  <% @routine.comments.each do |comment| %>
-    <%= link_to comment.user.username, user_path(comment.user) %> said
-    <%= comment.content %>
-  <% end %> -->
+<h4>Comments</h4>
+<% @routine.comments.reverse.each do |comment| %>
+  <li><%= comment.content %></li>
+<% end %>
