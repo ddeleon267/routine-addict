@@ -10,6 +10,7 @@ end
 
 use Rack::MethodOverride
 use ProductsController
+use CommentsController
 use RoutinesController
 use UsersController
 run ApplicationController
