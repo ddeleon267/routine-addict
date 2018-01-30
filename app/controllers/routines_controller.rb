@@ -38,27 +38,6 @@ class RoutinesController < ApplicationController
     end
   end
 
-  #### trying to add commenting functinality here bruh
-  #
-  # post '/comments' do
-  #
-  #   if logged_in? && !params[:comment][:content].empty?
-  #
-  #   #is this right? this doesn't seem right. idk
-  #   #@routine = Routine.find(params[:id])
-  #
-  #     @comment = self.new(params[:comment])
-  #     @comment.user_id = session[:id]
-  #     #@comment.routine_id = @routine.id
-  #
-  #     @comment.save
-  #     # redirect to "/routines/show"
-  #   # else
-  #   #   flash.next[:message] = "Comments cannot be blank"
-  #   #   redirect to "/routines/#{@routine.id}"
-  #   end
-  # end
-
   get '/routines/:id/edit' do
     @routine = Routine.find(params[:id])
     if logged_in? && current_user.id == @routine.user_id

@@ -15,18 +15,16 @@ class CommentsController < ApplicationController
     redirect to "/routines/#{@routine.id}"
   end
 
-  # delete '/comments/:id/delete' do
-  #   @comment = Comment.find(params[:id])
-  #   if logged_in? && current_user.id == @comment.user_id
-  #     @comment.delete
-  #     redirect to "/routines/#{@routine.id}"
-  #   else
-  #     redirect to "/routines/#{@routine.id}"
-  #   end
-  # end
+  delete '/comments/:id/delete' do
+    @comment = Comment.find(params[:id])
 
-  ##example
-  # def find_article!
-  #   @article = Article.find_by_slug!(params[:article_slug])
-  # end
+
+    if logged_in? && current_user.id == @comment.user_id
+      @comment.delete
+      redirect to "/routines/#{@comment.routine_id}"
+    else
+      redirect to "/routines/#{@comment.routine_id}"
+    end
+  end
+
 end
