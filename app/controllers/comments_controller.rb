@@ -23,6 +23,7 @@ class CommentsController < ApplicationController
 
   patch '/comments/:id' do
     @comment = Comment.find(params[:id])
+
     if logged_in? && current_user.id == @comment.user_id && !params[:comment][:content].empty?
       @comment.update(params[:comment])
       @comment.save
@@ -34,13 +35,8 @@ class CommentsController < ApplicationController
 
   delete '/comments/:id/delete' do
     @comment = Comment.find(params[:id])
-
-    if logged_in? && current_user.id == @comment.user_id
-      @comment.delete
-      redirect to "/routines/#{@comment.routine_id}"
-    else
-      redirect to "/routines/#{@comment.routine_id}"
-    end
+    @comment.delete if logged_in? && current_user.id == @comment.user_id
+    redirect to "/routines/#{@comment.routine_id}"
   end
 
 end
