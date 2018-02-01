@@ -1,5 +1,7 @@
 <div class="container">
 
+  <br><br>
+
   <h1>Welcome, <%= @user.username %>!</h1><br>
 
   <div class="row">
@@ -14,22 +16,28 @@
     <% end %>
   </div>
 
+  <br><br>
+
   <div class="row">
-    <div class="six columns">
+    <div class="eight columns">
       <h3>Recently Added Products</h3>
       <% if !@products.empty? %>
-        <% @products.reverse.take(10).each do |product| %>
-          <li><a href="/products/<%= product.id %>"><%= product.name %></a></li>
-        <% end %>
+        <ul>
+          <% @products.reverse.take(10).each do |product| %>
+            <li><a href="/products/<%= product.id %>"><%= product.name %></a></li>
+          <% end %>
+        </ul>
       <% end %>
     </div>
 
-    <div class="six columns">
+    <div class="four columns">
       <h3>Explore New Users!</h3>
       <% if !@users.empty? %>
-        <% @users.reverse.take(10).each do |user| %>
-          <li><a href="/users/<%= user.slug %>"><%= user.username %></a></li>
-        <% end %>
+        <ul>
+          <% @users.reverse.take(10).each do |user| %>
+            <li><a href="/users/<%= user.slug %>"><%= user.username %></a></li>
+          <% end %>
+        </ul>
       <% end %>
     </div>
   </div><!-- end of row -->

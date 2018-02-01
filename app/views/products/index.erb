@@ -1,5 +1,7 @@
 <h2> Products Added by the Community </h2>
 
-<% @products.each do |product| %>
-  <li><a href="/products/<%= product.id %>"><%= product.name %></a></li>
-<%end%>
+<ul>
+  <% @products.each do |product| %>
+    <li><a href="/products/<%= product.id %>"><%= product.name %></a></li>
+  <%end%>
+</ul>

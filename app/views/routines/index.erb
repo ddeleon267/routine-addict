@@ -5,9 +5,11 @@
 <h1>My Routines</h1>
 
 <% if !@routines.empty? %>
-  <% @routines.each do |routine| %>
-    <li><a href= "/routines/<%= routine.id %>"><%= routine.name %></a></li>
-  <% end %>
+  <ul>
+    <% @routines.each do |routine| %>
+      <li><a href= "/routines/<%= routine.id %>"><%= routine.name %></a></li>
+    <% end %>
+  </ul>
 <% else %>
   <p>You don't currently have any routines!</p>
 <% end %>

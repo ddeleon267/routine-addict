@@ -5,6 +5,7 @@
   <p><%= flash[:message] %></p>
 <% end %>
 
+<div>
 <form method="post" action="/signup">
   <label for="username">Username:</label>
   <input type="text" id="username" name="username"/>
@@ -22,3 +23,4 @@
 </form>
 
 <p>Already a user? <a href="/login">Login</a></p>
+</div>
