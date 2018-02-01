@@ -6,16 +6,22 @@
 
 <form method="post" action="/products">
 
-  <label for="name">Product Name</label><br></br>
-  <input type="text" name="product[name]"></input><br></br>
+  <div class="row">
+    <div class="four columns">
+      <label for="name">Product Name</label>
+      <input type="text" name="product[name]"></input>
+    </div>
 
-  <label for="category">Product Category (Cleanser, Moisturizer, etc.)</label><br></br>
-  <input type="text" name="product[category]"></input><br></br>
+    <div class="eight columns">
+      <label for="category">Product Category (Cleanser, Moisturizer, etc.)</label>
+      <input type="text" name="product[category]"></input><br></br>
+    </div>
+  </div>
 
-  <label for="ingredients">Product Ingredients</label><br></br>
+  <label for="ingredients">Product Ingredients</label>
   <input type="text-area" name="product[ingredients]"></input><br></br>
 
-  <label for="notes">Product Notes</label><br></br>
+  <label for="notes">Product Notes</label>
   <input type="text" name="product[notes]"></input><br></br>
 
   <input type="submit" name="Submit Product" value="Submit Product"></input>

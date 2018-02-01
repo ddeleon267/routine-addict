@@ -9,18 +9,24 @@
 <form method="post" action="/routines/<%= @routine.id %>">
   <input id="hidden" type="hidden" name="_method" value="PATCH">
 
-  <label for="name">Routine Name (e.g. "Winter Morning," "Fall Evening")</label><br></br>
-  <input type="text" name="routine[name]" value="<%= @routine.name %>"><br></br>
+  <div class="row">
+    <div class="four columns">
+      <label for="name">Routine Name</label>
+      <input type="text" name="routine[name]" value="<%= @routine.name %>"><br></br>
+    </div>
+    <div class="eight columns">
+      <label for="description">Description</label>
+      <input type="text" name="routine[description]" value="<%= @routine.description %>">
+    </div>
+  </div><!-- end of row -->
 
-  <label for="products">Add/Remove Products:</label><br></br>
+  <label for="products" class="">Add/Remove Products:
+    <span class="label-body"></span>
     <a href="/products/new">Or, click here to save a new product to the database first.</a><br></br>
-
     <% Product.all.each do |product| %>
-      <input type="checkbox" name="routine[product_ids][]" value="<%= product.id %>"<%='checked' if @routine.products.include?(product) %>><%= product.name %><br></input>
+        <input type="checkbox" name="routine[product_ids][]" value="<%= product.id %>"<%='checked' if @routine.products.include?(product) %>><%= product.name %><br></input>
     <% end %><br>
-
-  <label for="description">Description</label>
-  <input type="text" name="routine[description]" value="<%= @routine.description %>">
+  </label>
 
   <input type="submit" value="submit">
 </form>
