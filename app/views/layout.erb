@@ -9,8 +9,8 @@
 
     <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/skeleton.css">
+    <link rel="stylesheet" href="/stylesheets/normalize.css">
+    <link rel="stylesheet" href="/stylesheets/skeleton.css">
 
     <!-- my original stylesheet -->
     <!-- <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" /> -->
@@ -20,7 +20,8 @@
   <body>
     <div class="container">
       <div class="row">
-        <div class="one-half column" style="margin-top: 25%">
+        <div class="twelve columns" ><!-- modified this to remove margin from top-->
+
           <div class="nav"><!-- may need to remove this-->
             <% if logged_in? %>
               <a href="/home">Home</a>
