@@ -1,24 +1,32 @@
-<% if flash[:message] %>
-  <p><%= flash[:message] %></p>
-<% end %>
+<!-- form styling needs a lot of work -->
 
-<h1>Create A New Routine!</h1>
+<div class="container">
 
-<form method="post" action="/routines">
+  <% if flash[:message] %>
+    <div class="row">
+      <p><%= flash[:message] %></p>
+    </div>
+  <% end %>
 
-  <label for="name">Routine Name (e.g. "Winter Morning," "Fall Evening")</label><br></br>
-  <input type="text" name="routine[name]"><br></br>
+  <h1>Create A New Routine!</h1>
 
-  <label for="products">Choose From Existing Products: </label><br></br>
+  <form method="post" action="/routines">
 
-    <% Product.all.each do |product| %>
-      <input type="checkbox" name="routine[product_ids][]" value="<%= product.id %>"><%= product.name %><br></input>
-    <% end %><br>
+    <label for="name">Routine Name (e.g. "Winter Morning," "Fall Evening")</label><br></br>
+    <input type="text" name="routine[name]"><br></br>
 
-    <a href="/products/new">Or, click here to save a new product to the database first.</a><br></br><br></br>
+    <label for="products">Choose From Existing Products: </label><br></br>
 
-  <label for="description">Description</label><br></br>
-  <input type="text-area" name="routine[description]"><br></br>
+      <% Product.all.each do |product| %>
+        <input type="checkbox" name="routine[product_ids][]" value="<%= product.id %>"><%= product.name %><br></input>
+      <% end %><br>
 
-  <input type="submit" id="submit" value="Submit">
-</form>
+      <a href="/products/new">Or, click here to save a new product to the database first.</a><br></br><br></br>
+
+    <label for="description">Description</label><br></br>
+    <input type="text-area" name="routine[description]"><br></br>
+
+    <input type="submit" id="submit" value="Submit">
+  </form>
+
+</div><!-- close container -->
