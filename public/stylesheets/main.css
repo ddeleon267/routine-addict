@@ -1,38 +1,6 @@
-body {
-    color: #0C3247;
-    font-family: "Trebuchet MS", Helvetica, sans-serif
-}
-
-div.wrapper {
-  box-shadow: 0 0 10px rgba(0,0,0,.3);
-  border-style: solid;
-  border-color: #4F6A75;
-  border-width: 30px;
-  margin: 5px auto;
-  max-width: 1160px;
-  padding: 5%;
-  padding-bottom: 50px;
-  width: 85%;
-  overflow:hidden
-}
-
-a {
-    color: #0C3247;
-}
-
-div.nav {
+div.my_nav {
   float: right;
   padding: 10px 0px;
   margin-top: -40px;
   margin-right: -40px;
-}
-
-div.nav a {
-  padding: 10px 10px;
-  font-weight: bold;
-}
-
-a:hover {
-    color: white;
-    background: #4F6A75;
 }

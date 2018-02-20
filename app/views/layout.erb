@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/stylesheets/skeleton.css">
 
     <!-- my original stylesheet -->
-    <!-- <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" /> -->
+    <link rel="stylesheet" type="text/css" href="/stylesheets/main.css"/>
     <link rel="icon" type="image/png" href="images/favicon.png">
   </head>
 
@@ -22,7 +22,7 @@
       <div class="row">
         <div class="twelve columns" ><!-- modified this to remove margin from top-->
 
-          <div class="nav"><!-- may need to remove this-->
+          <div class=""><!-- may need to remove this-->
             <% if logged_in? %>
               <a href="/home">Home</a>
               <a href="/products/new">Add a New Product</a>
@@ -34,7 +34,14 @@
             <% end %>
           </div>
 
-          <%= yield %>
+        </div>
+
+        <div class="row">
+          <div class="twelve columns" >
+
+            <%= yield %>
+          </div>
+        </div>
 
           <br><br>
 
